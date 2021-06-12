@@ -1,5 +1,8 @@
+import { ActiveLink } from '../ActiveLink';
 import { SignInButton } from './SignInButton';
+
 import styles from './styles.module.scss';
+
 export const Header = () => {
   return (
     <header className={styles.headerContainer}>
@@ -7,8 +10,13 @@ export const Header = () => {
         <img src="/images/logo.svg" alt="ig.news" />
 
         <nav>
-          <a className={styles.active}>Home</a>
-          <a>Posts</a>
+          <ActiveLink activeClassName={styles.active} href="/">
+            <a>Home</a>
+          </ActiveLink>
+          {/* prefetch => propriedade do Link para fazer o pre carregamento da pagina */}
+          <ActiveLink activeClassName={styles.active} href="/posts">
+            <a>Posts</a>
+          </ActiveLink>
         </nav>
 
         <SignInButton />
